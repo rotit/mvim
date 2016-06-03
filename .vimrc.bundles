@@ -17,18 +17,23 @@ Plugin 'VundleVim/Vundle.vim'
 " plugin on GitHub repo
 "Plugin 'tpope/vim-fugitive'
 
-Bundle 'christoomey/vim-run-interactive'
+"Bundle 'christoomey/vim-run-interactive'
 "Bundle 'Valloric/YouCompleteMe'
+
 Bundle "scrooloose/nerdtree"
 Bundle 'kien/ctrlp.vim'
 Bundle 'tpope/vim-surround'
 Bundle 'sjl/gundo.vim'
-
-
-
-
+Bundle 'Lokaltog/vim-powerline'
+"Bundle 'The-NERD-tree'
+Bundle 'majutsushi/tagbar'
+Plugin 'OmniCppComplete'
+Plugin 'SuperTab'
+Plugin 'badwolf'
 " plugin from http://vim-scripts.org/vim/scripts.html
 "Plugin 'L9'
+"Bundle 'taglist.vim'
+"Bundle 'ctags.vim'
 
 " Git plugin not hosted on GitHub
 "Plugin 'git://git.wincent.com/command-t.git'
