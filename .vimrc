@@ -46,6 +46,7 @@ set cindent
 
 syntax enable
 syntax on  
+set colorscheme badwolf
 
 
 "gvim
@@ -91,18 +92,18 @@ nmap <F2> :tprevious<CR><CR>
 nmap <F3> :tnext<CR><CR>
 
 
-"the-nerd-tree
-"nmap <F4> :NERDTreeToggle<CR>
+"nerdtree
+map <F4> :NERDTreeToggle<CR>
 let NERDTreeDirArrows=1 "目录箭头 : 1 显示箭头  0传统+-|号 
 
 " 设置winmanager
 " " 设置界面分割
 " let g:winManagerWindowLayout = "TagList|FileExplorer"
- let g:winManagerWindowLayout = "FileExplorer"
+" let g:winManagerWindowLayout = "FileExplorer"
 " "设置winmanager的宽度，默认为25
  let g:winManagerWidth = 30
 " "定义打开关闭winmanager快捷键为F8
- nmap <silent> <F4> :WMToggle<cr>
+" nmap <silent> <F4> :WMToggle<cr>
 " "在进入vim时自动打开winmanager
 " let g:AutoOpenWinManager = 1
 
@@ -123,7 +124,7 @@ let Tlist_Use_Right_Window=1            "在右侧窗口中显示taglist窗口
 let g:tagbar_ctags_bin='ctags'            "ctags程序的路径
 "let g:tagbar_ctags_bin='G:/vim/vimfiles/bundle/ctags.vim/plugin'            "ctags程序的路径
 let g:tagbar_width=30                    "窗口宽度的设置
-"map <F3> :Tagbar<CR>
+map <F10> :Tagbar<CR>
 "autocmd BufReadPost *.cpp,*.c,*.h,*.hpp,*.cc,*.cxx call tagbar#autoopen()     "如果是c语言的程序的话，tagbar自动开启
 
 "Powerline
@@ -131,6 +132,9 @@ let g:Powerline_symbols = 'fancy'
 set laststatus=2
 set t_Co=256
 
+
+"gundo
+nnoremap <leader>h :GundoToggle<CR>
 
 "
 if has("cscope")

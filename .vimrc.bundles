@@ -19,20 +19,44 @@ Plugin 'VundleVim/Vundle.vim'
 
 "Bundle 'christoomey/vim-run-interactive'
 "Bundle 'Valloric/YouCompleteMe'
+"
 
-Bundle "scrooloose/nerdtree"
+"mulu
+Bundle 'scrooloose/nerdtree'
 Bundle 'kien/ctrlp.vim'
-Bundle 'tpope/vim-surround'
-Bundle 'sjl/gundo.vim'
+
+"meihua
 Bundle 'Lokaltog/vim-powerline'
-"Bundle 'The-NERD-tree'
+"Bundle 'bling/vim-airline'
+
+"chakan
+Bundle 'taglist.vim'
 Bundle 'majutsushi/tagbar'
+
+"buquan
 Plugin 'OmniCppComplete'
 Plugin 'SuperTab'
+
+
+"zhushi
+Bundle 'scrooloose/nerdcommenter'
+"Bundle 'The-NERD-tree'
+
+"bianji
+Plugin 'scrooloose/syntastic'
+Bundle 'tpope/vim-surround'
+Bundle 'sjl/gundo.vim'
+Plugin 'jiangmiao/auto-pairs'
+
+
 Plugin 'badwolf'
+Plugin 'Solarized'
+
+
+
+
 " plugin from http://vim-scripts.org/vim/scripts.html
 "Plugin 'L9'
-"Bundle 'taglist.vim'
 "Bundle 'ctags.vim'
 
 " Git plugin not hosted on GitHub
