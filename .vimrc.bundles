@@ -51,6 +51,8 @@ Plugin 'jiangmiao/auto-pairs'
 
 Plugin 'badwolf'
 Plugin 'Solarized'
+Plugin 'github-theme'
+Plugin 'molokai'
 
 
 

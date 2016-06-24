@@ -46,8 +46,9 @@ set cindent
 
 syntax enable
 syntax on  
-set colorscheme badwolf
-
+winpos 0 22
+"colorscheme badwolf
+highlight Normal guibg=#CCCCFF guifg=black
 
 "gvim
 set guifont=Monospace\ 14
@@ -62,10 +63,14 @@ set guioptions-=T
 
   
 """""""""""""" yinshe """""""""""""""
+set winaltkeys=no
 nmap <silent> <F1> <ESC>:e ++ff=dos<RETURN>
-imap <C-n> <Esc> 
+imap <M-r> <Esc>
 imap <C-a> <Esc>^
 imap <C-e> <Esc>$
+nmap <M-e> :source ~/.vimrc<CR>
+nmap <M-1> :source ~/.vim
+nmap <C-1> :source ~/.vim
 
 
 
@@ -80,17 +85,6 @@ filetype plugin indent on
 
 
 """"""""""""""plug"""""""""""""""""
-"tlist
-let Tlist_Show_One_File=1
-let Tlist_Exit_OnlyWindow=1  
-let Tlist_Use_Right_Window = 1         "在右侧窗口中显示taglist窗口
-set tags=tags
-map <F5> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
-nmap <silent> <F9> <ESC>:Tlist<RETURN>
-
-nmap <F2> :tprevious<CR><CR>
-nmap <F3> :tnext<CR><CR>
-
 
 "nerdtree
 map <F4> :NERDTreeToggle<CR>
@@ -112,12 +106,21 @@ let NERDTreeDirArrows=1 "目录箭头 : 1 显示箭头  0传统+-|号
 "let Tlist_Ctags_Cmd='ctags'
 "let Tlist_Ctags_Cmd = 'G:/vim/vimfiles/bundle/ctags.vim/plugin'
 
+
 "taglist
-"let Tlist_Show_One_File=1               "不同时显示多个文件的tag，只显示当前文件的
 "let Tlist_WinWidt =28                    "设置taglist的宽度
-let Tlist_Exit_OnlyWindow=1             "如果taglist窗口是最后一个窗口，则退出vim
-let Tlist_Use_Right_Window=1            "在右侧窗口中显示taglist窗口
+let Tlist_Show_One_File=1               "不同时显示多个文件的tag，只显示当前文件的
+let Tlist_Exit_OnlyWindow=1  
+let Tlist_Use_Right_Window = 1         "在右侧窗口中显示taglist窗口
+set updatetime=200
 "let Tlist_Use_Left_Windo =1                "在左侧窗口中显示taglist窗口
+set tags=tags
+map <F5> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+nmap <silent> <F9> <ESC>:Tlist<RETURN>
+
+nmap <F2> :tprevious<CR><CR>
+nmap <F3> :tnext<CR><CR>
+map <M-u> :TlistUpdate<CR>
 
 "tagbar
 "nmap <Leader>tb :TagbarToggle<CR>        "快捷键设置
@@ -129,10 +132,15 @@ map <F10> :Tagbar<CR>
 
 "Powerline
 let g:Powerline_symbols = 'fancy'
+let g:Powerline_stl_path_style = 'filename'
+let g:Powerline_mode_n = 'N'
 set laststatus=2
 set t_Co=256
+"Note: Remember to clear your cache with |:PowerlineClearCache| after changing your statusline!
 
 
+"nerdcommen
+let mapleader = ","
 "gundo
 nnoremap <leader>h :GundoToggle<CR>
 
@@ -152,8 +160,12 @@ endif
 "cl cn cp
 set cscopequickfix=s-,c-,d-,i-,t-,e-,g-
 
-nmap <C-j> :cnext<CR>
-nmap <C-k> :cprev<CR>
+nmap <M-j> :cnext<CR>
+nmap <M-k> :cprev<CR>
+nmap <M-i> <C-i><CR>
+nmap <M-o> <C-o><CR>
+nmap <M-,> :cw<CR>
+nmap <M-.> :ccl<CR>
 
 nmap <C-c>s :scs find s <C-R>=expand("<cword>")<CR><CR>
 nmap <C-c>g :scs find g <C-R>=expand("<cword>")<CR><CR>
@@ -177,20 +189,11 @@ nmap <C-h>d :vsp<CR>:cs find d <C-R>=expand("<cword>")<CR><CR>
 
 
 
-nmap <C-1>s :cs find s <C-R>=expand("<cword>")<CR><CR>
-nmap <C-1>g :cs find g <C-R>=expand("<cword>")<CR><CR>
-nmap <C-1>c :cs find c <C-R>=expand("<cword>")<CR><CR>
-nmap <C-1>t :cs find t <C-R>=expand("<cword>")<CR><CR>
-nmap <C-1>e :cs find e <C-R>=expand("<cword>")<CR><CR>
-nmap <C-1>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
-nmap <C-1>i :cs find i <C-R>=expand("<cfile>")<CR><CR>
-nmap <C-1>d :cs find d <C-R>=expand("<cword>")<CR><CR>
-
-nmap <C-2>s :scs find s <C-R>=expand("<cword>")<CR><CR>
-nmap <C-2>g :scs find g <C-R>=expand("<cword>")<CR><CR>
-nmap <C-2>c :scs find c <C-R>=expand("<cword>")<CR><CR>
-nmap <C-2>t :scs find t <C-R>=expand("<cword>")<CR><CR>
-nmap <C-2>e :scs find e <C-R>=expand("<cword>")<CR><CR>
-nmap <C-2>f :scs find f <C-R>=expand("<cfile>")<CR><CR>
-nmap <C-2>i :scs find i <C-R>=expand("<cfile>")<CR><CR>
-nmap <C-2>d :scs find d <C-R>=expand("<cword>")<CR><CR>
+nmap <C-s>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+nmap <C-s>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <C-s>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+nmap <C-s>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+nmap <C-s>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+nmap <C-s>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
+nmap <C-s>i :cs find i <C-R>=expand("<cfile>")<CR><CR>
+nmap <C-s>d :cs find d <C-R>=expand("<cword>")<CR><CR>
