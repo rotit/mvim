@@ -49,6 +49,8 @@ syntax on
 winpos 0 22
 "colorscheme badwolf
 highlight Normal guibg=#CCCCFF guifg=black
+highlight CursorLine    guibg=#CCbcef
+highlight CursorColumn  guibg=#CCbceF
 
 "gvim
 set guifont=Monospace\ 14
@@ -65,11 +67,14 @@ set guioptions-=T
 """""""""""""" yinshe """""""""""""""
 set winaltkeys=no
 nmap <silent> <F1> <ESC>:e ++ff=dos<RETURN>
-imap <M-r> <Esc>
+
+imap <C-j> <Esc>
+nmap <C-j> :<Esc>
 imap <C-a> <Esc>^
 imap <C-e> <Esc>$
-nmap <M-e> :source ~/.vimrc<CR>
-nmap <M-1> :source ~/.vim
+
+
+nmap <M-e> :w<CR>  :source ~/.vimrc<CR>
 nmap <C-1> :source ~/.vim
 
 
@@ -141,6 +146,7 @@ set t_Co=256
 
 "nerdcommen
 let mapleader = ","
+map <M-z> :,c <space><>
 "gundo
 nnoremap <leader>h :GundoToggle<CR>
 
@@ -151,7 +157,7 @@ if has("cscope")
 	set nocsverb
 	" add any database in current directory
 	if filereadable("cscope.out")
-		cs add cscope.out
+		cs add cscope.out . -C
 		" else add database pointed to by environment
 	endif
 	set csverb
@@ -159,13 +165,22 @@ endif
 
 "cl cn cp
 set cscopequickfix=s-,c-,d-,i-,t-,e-,g-
+nmap <M-t> :tab sp<CR>
 
 nmap <M-j> :cnext<CR>
 nmap <M-k> :cprev<CR>
+nmap <F3> :cnext<CR>
+nmap <F2> :cprev<CR>
+
 nmap <M-i> <C-i><CR>
 nmap <M-o> <C-o><CR>
+nmap <M-1> <C-i><CR>
+nmap <M-2> <C-o><CR>
+
 nmap <M-,> :cw<CR>
 nmap <M-.> :ccl<CR>
+nmap <M-s> :cw<CR>
+nmap <M-s><M-s> :ccl<CR>
 
 nmap <C-c>s :scs find s <C-R>=expand("<cword>")<CR><CR>
 nmap <C-c>g :scs find g <C-R>=expand("<cword>")<CR><CR>
@@ -177,6 +192,15 @@ nmap <C-c>i :scs find i <C-R>=expand("<cfile>")<CR><CR>
 nmap <C-c>d :scs find d <C-R>=expand("<cword>")<CR><CR>
 
 
+nmap <C-s>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+nmap <C-s>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <C-s>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+nmap <C-s>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+nmap <C-s>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+nmap <C-s>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
+nmap <C-s>i :cs find i <C-R>=expand("<cfile>")<CR><CR>
+nmap <C-s>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+
 
 nmap <C-h>s :vsp<CR>:cs find s <C-R>=expand("<cword>")<CR><CR>
 nmap <C-h>g :vsp<CR>:cs find g <C-R>=expand("<cword>")<CR><CR>
@@ -186,14 +210,3 @@ nmap <C-h>e :vsp<CR>:cs find e <C-R>=expand("<cword>")<CR><CR>
 nmap <C-h>f :vsp<CR>:cs find f <C-R>=expand("<cfile>")<CR><CR>
 nmap <C-h>i :vsp<CR>:cs find i <C-R>=expand("<cfile>")<CR><CR>
 nmap <C-h>d :vsp<CR>:cs find d <C-R>=expand("<cword>")<CR><CR>
-
-
-
-nmap <C-s>s :cs find s <C-R>=expand("<cword>")<CR><CR>
-nmap <C-s>g :cs find g <C-R>=expand("<cword>")<CR><CR>
-nmap <C-s>c :cs find c <C-R>=expand("<cword>")<CR><CR>
-nmap <C-s>t :cs find t <C-R>=expand("<cword>")<CR><CR>
-nmap <C-s>e :cs find e <C-R>=expand("<cword>")<CR><CR>
-nmap <C-s>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
-nmap <C-s>i :cs find i <C-R>=expand("<cfile>")<CR><CR>
-nmap <C-s>d :cs find d <C-R>=expand("<cword>")<CR><CR>
