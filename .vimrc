@@ -12,7 +12,8 @@ set hlsearch
 
 set smarttab
 
-set fileencodings=utf-8,gb2312,gbk,gb18030
+"set fileencodings=utf-8,gb2312,gbk,gb18030
+set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 set termencoding=utf-8
 set fileformats=unix
 set nocompatible
@@ -51,6 +52,8 @@ winpos 0 22
 highlight Normal guibg=#CCCCFF guifg=black
 highlight CursorLine    guibg=#CCbcef
 highlight CursorColumn  guibg=#CCbceF
+colorscheme solarized
+highlight Normal guifg=#7777FF
 
 "gvim
 set guifont=Monospace\ 14
@@ -92,20 +95,31 @@ filetype plugin indent on
 """"""""""""""plug"""""""""""""""""
 
 "nerdtree
-map <F4> :NERDTreeToggle<CR>
+map <F2> :NERDTreeFind<CR>:wincmd p<CR>
+
+"map <F4> :NERDTree<CR>
 let NERDTreeDirArrows=1 "目录箭头 : 1 显示箭头  0传统+-|号 
+let NERDTreeIgnore = ['.*\.o$','.*\.ko$','.*\.gz$']  "忽略后缀为.o，.ko，.gz的文件。
+
+
+" 关闭文件时同时关闭文件浏览器
+let NERDTreeQuitOnOpen = 1
+"autocmd VimEnter * NERDTreeFind |wincmd p|wincmd  "进入vim时打开 NERDTreeFind窗口                                                                 
+"autocmd TabEnter * NERDTreeFind |wincmd p|wincmd  "打开tab页时打开 NERDTreeFind窗口
+
 
 " 设置winmanager
 " " 设置界面分割
 " let g:winManagerWindowLayout = "TagList|FileExplorer"
 " let g:winManagerWindowLayout = "FileExplorer"
 " "设置winmanager的宽度，默认为25
- let g:winManagerWidth = 30
+"let g:winManagerWidth = 30
 " "定义打开关闭winmanager快捷键为F8
 " nmap <silent> <F4> :WMToggle<cr>
 " "在进入vim时自动打开winmanager
 " let g:AutoOpenWinManager = 1
 
+"set autochdir
 
 "ctags
 "let Tlist_Ctags_Cmd='ctags'
@@ -123,8 +137,8 @@ set tags=tags
 map <F5> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 nmap <silent> <F9> <ESC>:Tlist<RETURN>
 
-nmap <F2> :tprevious<CR><CR>
-nmap <F3> :tnext<CR><CR>
+nmap <F3> :tprevious<CR>
+nmap <F4> :tnext<CR>
 map <M-u> :TlistUpdate<CR>
 
 "tagbar
@@ -133,11 +147,11 @@ let g:tagbar_ctags_bin='ctags'            "ctags程序的路径
 "let g:tagbar_ctags_bin='G:/vim/vimfiles/bundle/ctags.vim/plugin'            "ctags程序的路径
 let g:tagbar_width=30                    "窗口宽度的设置
 map <F10> :Tagbar<CR>
-"autocmd BufReadPost *.cpp,*.c,*.h,*.hpp,*.cc,*.cxx call tagbar#autoopen()     "如果是c语言的程序的话，tagbar自动开启
+autocmd BufReadPost *.cpp,*.c,*.h,*.hpp,*.cc,*.cxx call tagbar#autoopen()     "如果是c语言的程序的话，tagbar自动开启
 
 "Powerline
 let g:Powerline_symbols = 'fancy'
-let g:Powerline_stl_path_style = 'filename'
+let g:Powerline_stl_path_style = 'relative' "filename
 let g:Powerline_mode_n = 'N'
 set laststatus=2
 set t_Co=256
@@ -152,7 +166,7 @@ nnoremap <leader>h :GundoToggle<CR>
 
 "
 if has("cscope")
-	set csto=1
+	set csto=1 "0 run cscope
 	set cst
 	set nocsverb
 	" add any database in current directory
@@ -164,22 +178,27 @@ if has("cscope")
 endif
 
 "cl cn cp
-set cscopequickfix=s-,c-,d-,i-,t-,e-,g-
-nmap <M-t> :tab sp<CR>
+set cscopequickfix=s-,c-,d-,i-,t-,e-
+
+
+nmap <C-q> :vsplit<CR><C-]><CR>
+nmap <M-v> :vsplit<CR>
+nmap <M-t> :tab sp<CR>:Tagbar<CR><F2>
+
 
 nmap <M-j> :cnext<CR>
 nmap <M-k> :cprev<CR>
-nmap <F3> :cnext<CR>
-nmap <F2> :cprev<CR>
+nmap <M-3> :cprev<CR>
+nmap <M-4> :cnext<CR>
 
 nmap <M-i> <C-i><CR>
 nmap <M-o> <C-o><CR>
-nmap <M-1> <C-i><CR>
-nmap <M-2> <C-o><CR>
+nmap <M-1> <C-o><CR>
+nmap <M-2> <C-i><CR>
 
 nmap <M-,> :cw<CR>
 nmap <M-.> :ccl<CR>
-nmap <M-s> :cw<CR>
+nmap <M-s> :botright cw<CR>
 nmap <M-s><M-s> :ccl<CR>
 
 nmap <C-c>s :scs find s <C-R>=expand("<cword>")<CR><CR>
@@ -210,3 +229,9 @@ nmap <C-h>e :vsp<CR>:cs find e <C-R>=expand("<cword>")<CR><CR>
 nmap <C-h>f :vsp<CR>:cs find f <C-R>=expand("<cfile>")<CR><CR>
 nmap <C-h>i :vsp<CR>:cs find i <C-R>=expand("<cfile>")<CR><CR>
 nmap <C-h>d :vsp<CR>:cs find d <C-R>=expand("<cword>")<CR><CR>
+
+"""""""""""" bianji""""""""""""""
+"连字符链接的单词看成一个整体
+"set iskeyword +=-
+winpos 0 22
+highlight Normal guifg=#7777FF
