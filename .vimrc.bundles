@@ -23,12 +23,13 @@ Plugin 'VundleVim/Vundle.vim'
 
 "mulu
 Bundle 'scrooloose/nerdtree'
+Bundle 'Xuyuanp/nerdtree-git-plugin'
 Bundle 'kien/ctrlp.vim'
 
 "meihua
 Bundle 'Lokaltog/vim-powerline'
 "Bundle 'bling/vim-airline'
-
+"Bundle 'kien/rainbow_parentheses.vim' "kuohao gaoliang ,yiyang
 "chakan
 Bundle 'taglist.vim'
 Bundle 'majutsushi/tagbar'
@@ -42,13 +43,31 @@ Plugin 'SuperTab'
 Bundle 'scrooloose/nerdcommenter'
 "Bundle 'The-NERD-tree'
 
+"qiehuan
+Plugin 'a.vim'
+
 "bianji
 Plugin 'scrooloose/syntastic'
 Bundle 'tpope/vim-surround'
 Bundle 'sjl/gundo.vim'
 Plugin 'jiangmiao/auto-pairs'
+Plugin 'terryma/vim-expand-region' "这个插件用来扩展选择的内容。比方说当前光标在一对双引号中，双引号包含在一对括号中，此时敲击 + 可以选中双引号中的内容，再敲击 + 可以选中括号中的内容。我将其绑定为最大的空格键以显示我对这个插件的虔诚。
 
+"tiaozhuan
+Bundle 'Lokaltog/vim-easymotion'
 
+"buffer
+"Plugin 'minibufexpl.vim'
+"Plugin 'switch-buffer-quickly'
+Plugin 'Tagma-Buffer-Manager'
+
+"session
+"Plugin 'session.vim' "error
+"Plugin 'Sessions' "Sessions is an automatic session generator, per project (aka directory) basis, for Vim editor.
+"Plugin 'gsession.vim'
+"Plugin 'Session-manager'
+
+"zhuti
 Plugin 'badwolf'
 Plugin 'Solarized'
 Plugin 'github-theme'
