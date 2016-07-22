@@ -26,7 +26,7 @@ set nowrapscan
 set mouse=a
 "设置vim中默认使用选择缓冲区寄存器 “*：gvim中可以复制到windows上
 "yum install xclip,不确定是不是装了这个起作用了
-set clipboard+=unnamed
+set clipboard=unnamed
 
 "no backup
 set nobackup
@@ -47,6 +47,8 @@ set cindent
 syntax enable
 syntax on  
 winpos 0 22
+
+"set nohlsearch "search without highlight
 "colorscheme badwolf
 highlight Normal guibg=#CCCCFF guifg=black
 highlight CursorLine    guibg=#CCbcef
@@ -73,6 +75,8 @@ nmap <silent> <F1> <ESC>:e ++ff=dos<RETURN>
 imap <C-a> <Esc>^
 imap <C-e> <Esc>$
 
+" vim 自身命令行模式智能补全
+set wildmenu
 
 nmap <M-e> :w<CR>  :source ~/.vimrc<CR>:e!<CR>
 "nmap <C-1> :source ~/.vim
@@ -94,6 +98,7 @@ filetype plugin indent on
 
 "nerdtree
 map <F2> :NERDTreeFind<CR>:wincmd p<CR>
+"autocmd BufEnter * silent! if bufname('%') !~# 'NERD_tree_' | cd %:p:h | NERDTreeFind | wincmd p | endif
 "map <F4> :NERDTree<CR>
 
 autocmd VimEnter * NERDTreeFind | autocmd VimEnter wincmd p  "进入vim时打开 NERDTreeFind窗口                                                                 
@@ -101,15 +106,16 @@ autocmd VimEnter * NERDTreeFind | autocmd VimEnter wincmd p  "进入vim时打开
 "autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeType == "primary") | q | endif
 
 
-let NERDTreeDirArrows=1 "目录箭头 : 1 显示箭头  0传统+-|号 
+let NERDTreeDirArrows=0 "目录箭头 : 1 显示箭头  0传统+-|号 
 let NERDTreeIgnore = ['.*\.o$','.*\.ko$','.*\.gz$']  "忽略后缀为.o，.ko，.gz的文件。
 let NERDChristmasTree=1 "
-"let NERDTreeAutoCenter=1 "控制当光标移动超过一定距离时，是否自动将焦点调整到屏中心
+let NERDTreeAutoCenter=1 "控制当光标移动超过一定距离时，是否自动将焦点调整到屏中心
 "let NERDTreeBookmarksFile=$USR.'/Data/NerdBookmarks.txt'
 let NERDTreeShowBookmarks=1
 "let NERDTreeShowFiles=1  ""是否默认显示文件
 let NERDTreeShowHidden=1
-let NERDTreeShowLineNumbers=1
+let NERDTreeShowLineNumbers=0
+let NERDTreeHighlightCursorline=1 
 "let NERDTreeWinPos='left'
 let NERDTreeWinSize=40
 "let NERDTreeQuitOnOpen = 1 "close nerdtree when open a file
@@ -267,19 +273,23 @@ if has("cscope")
 	set nocsverb
 	" add any database in current directory
 	if filereadable("cscope.out")
-		cs add cscope.out  -C
+		cs add cscope.out . -C
 		" else add database pointed to by environment
 	endif
 	set csverb
 endif
 
 "cl cn cp
-set cscopequickfix=s-,c-,d-,i-,t-,e-
+set cscopequickfix=s-,c-,d-,i-,t-,e-,g-
 
 
 nmap <C-q> :vsplit<CR><C-]><CR>
 nmap <M-v> :vsplit<CR>
 nmap <M-t> :tab sp<CR>:Tagbar<CR><F2>
+
+"nmap <C-w>T <C-w>T <F2> <F10>
+nmap T :wincmd T <CR> :NERDTreeFind<CR>:wincmd p<CR> :Tagbar<CR>
+
 "nmap <S-j> :<M-t> "<C-w>]
 
 nmap <M-j> :cnext<CR>
@@ -296,26 +306,26 @@ nmap <M-,> :cw<CR>
 nmap <M-.> :ccl<CR>
 nmap <M-s> :botright cw<CR>
 nmap <M-s><M-s> :ccl<CR>
+nmap <C-w>o <ESC>
 
-nmap <C-c>s :scs find s <C-R>=expand("<cword>")<CR><CR>
-nmap <C-c>g :scs find g <C-R>=expand("<cword>")<CR><CR>
-nmap <C-c>c :scs find c <C-R>=expand("<cword>")<CR><CR>
-nmap <C-c>t :scs find t <C-R>=expand("<cword>")<CR><CR>
-nmap <C-c>e :scs find e <C-R>=expand("<cword>")<CR><CR>
-nmap <C-c>f :scs find f <C-R>=expand("<cfile>")<CR><CR>
-nmap <C-c>i :scs find i <C-R>=expand("<cfile>")<CR><CR>
-nmap <C-c>d :scs find d <C-R>=expand("<cword>")<CR><CR>
+nmap <C-s>s :scs find s <C-R>=expand("<cword>")<CR><CR>
+nmap <C-s>g :scs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <C-s>c :scs find c <C-R>=expand("<cword>")<CR><CR>
+nmap <C-s>t :scs find t <C-R>=expand("<cword>")<CR><CR>
+nmap <C-s>e :scs find e <C-R>=expand("<cword>")<CR><CR>
+nmap <C-s>f :scs find f <C-R>=expand("<cfile>")<CR><CR>
+nmap <C-s>i :scs find i <C-R>=expand("<cfile>")<CR><CR>
+nmap <C-s>d :scs find d <C-R>=expand("<cword>")<CR><CR>
 
 
-nmap <C-s>s :cs find s <C-R>=expand("<cword>")<CR><CR>
-nmap <C-s>g :cs find g <C-R>=expand("<cword>")<CR><CR>
-nmap <C-s>c :cs find c <C-R>=expand("<cword>")<CR><CR>
-nmap <C-s>t :cs find t <C-R>=expand("<cword>")<CR><CR>
-nmap <C-s>e :cs find e <C-R>=expand("<cword>")<CR><CR>
-nmap <C-s>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
-nmap <C-s>i :cs find i <C-R>=expand("<cfile>")<CR><CR>
-nmap <C-s>d :cs find d <C-R>=expand("<cword>")<CR><CR>
-
+nmap <C-c>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+nmap <C-c>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <C-c>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+nmap <C-c>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+nmap <C-c>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+nmap <C-c>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
+nmap <C-c>i :cs find i <C-R>=expand("<cfile>")<CR><CR>
+nmap <C-c>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 
 nmap <C-h>s :vsp<CR>:cs find s <C-R>=expand("<cword>")<CR><CR>
 nmap <C-h>g :vsp<CR>:cs find g <C-R>=expand("<cword>")<CR><CR>
