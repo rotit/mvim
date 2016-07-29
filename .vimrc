@@ -98,6 +98,8 @@ filetype plugin indent on
 
 "nerdtree
 map <F2> :NERDTreeFind<CR>:wincmd p<CR>
+nnoremap <M-F2> <ESC>
+nnoremap <M-F3> :NERDTreeToggle<CR>
 "autocmd BufEnter * silent! if bufname('%') !~# 'NERD_tree_' | cd %:p:h | NERDTreeFind | wincmd p | endif
 "map <F4> :NERDTree<CR>
 
@@ -198,6 +200,7 @@ let Tlist_Use_Right_Window = 1         "在右侧窗口中显示taglist窗口
 set updatetime=200
 "let Tlist_Use_Left_Windo =1                "在左侧窗口中显示taglist窗口
 set tags=tags
+nmap <F6> :set tags=/home/tdk/work/guoke/GK710X_LinuxSDK_v1.1.2/linux/kernel/3.4.43/tags<CR>
 map <F5> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 nmap <silent> <F9> <ESC>:Tlist<RETURN>
 
@@ -249,6 +252,9 @@ let g:tagbar_type_cpp = {
      \ 'union'	 : 'u'
    \ }
 \ }
+
+"SUPERtabber
+imap <F12> <C-n><C-p>
 
 
 "Powerline

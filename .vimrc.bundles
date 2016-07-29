@@ -1,4 +1,4 @@
-
+"git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 
 
 set nocompatible              " be iMproved, required
@@ -7,6 +7,9 @@ filetype off                  " required
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
+"set rtp+=~/.vim/bundle/vundle/
+"call vundle#rc()
+
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
 
@@ -18,11 +21,10 @@ Plugin 'VundleVim/Vundle.vim'
 "Plugin 'tpope/vim-fugitive'
 
 "Bundle 'christoomey/vim-run-interactive'
-"Bundle 'Valloric/YouCompleteMe'
-"
 
 "mulu
 Bundle 'scrooloose/nerdtree'
+"Bundle 'jistr/vim-nerdtree-tabs.git'
 Bundle 'Xuyuanp/nerdtree-git-plugin'
 Bundle 'kien/ctrlp.vim'
 
@@ -36,8 +38,8 @@ Bundle 'majutsushi/tagbar'
 
 "buquan
 Plugin 'OmniCppComplete'
-Plugin 'SuperTab'
-
+"Plugin 'SuperTab'
+Plugin 'ervandew/supertab'
 
 "zhushi
 Bundle 'scrooloose/nerdcommenter'
@@ -51,6 +53,7 @@ Plugin 'scrooloose/syntastic'
 Bundle 'tpope/vim-surround'
 Bundle 'sjl/gundo.vim'
 Plugin 'jiangmiao/auto-pairs'
+"Bundle 'Valloric/YouCompleteMe'
 Plugin 'terryma/vim-expand-region' "这个插件用来扩展选择的内容。比方说当前光标在一对双引号中，双引号包含在一对括号中，此时敲击 + 可以选中双引号中的内容，再敲击 + 可以选中括号中的内容。我将其绑定为最大的空格键以显示我对这个插件的虔诚。
 
 "tiaozhuan
