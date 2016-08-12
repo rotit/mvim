@@ -34,7 +34,6 @@ set nowritebackup
 set noswapfile
 
 
-
 """""""""""" display"""""""""""""
 set cul
 set cuc
@@ -101,6 +100,9 @@ map <F2> :NERDTreeFind<CR>:wincmd p<CR>
 nnoremap <M-F2> <ESC>
 nnoremap <M-F3> :NERDTreeToggle<CR>
 "autocmd BufEnter * silent! if bufname('%') !~# 'NERD_tree_' | cd %:p:h | NERDTreeFind | wincmd p | endif
+
+"autocmd bufenter * if (winnr("$") == 1 ) | q | endif
+ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeType == "primary") | q | endif
 "map <F4> :NERDTree<CR>
 
 autocmd VimEnter * NERDTreeFind | autocmd VimEnter wincmd p  "进入vim时打开 NERDTreeFind窗口                                                                 
@@ -255,14 +257,20 @@ let g:tagbar_type_cpp = {
 
 "SUPERtabber
 imap <F12> <C-n><C-p>
+imap ll <C-n><C-p>
 
 
 "Powerline
-let g:Powerline_symbols = 'fancy'
+let g:Powerline_symbols = 'unicode'
 let g:Powerline_stl_path_style = 'relative' "filename
 let g:Powerline_mode_n = 'N'
 set laststatus=2
 set t_Co=256
+call Pl#Theme#RemoveSegment('fileformat')
+call Pl#Theme#RemoveSegment('filetype')
+call Pl#Theme#RemoveSegment('fileencoding')
+call Pl#Theme#RemoveSegment('lineinfo')
+"call Pl#Theme#RemoveSegment('scrollpercent')
 "Note: Remember to clear your cache with |:PowerlineClearCache| after changing your statusline!
 
 
@@ -365,6 +373,33 @@ let OmniCpp_ShowAccess=1
 """""""""""" bianji""""""""""""""
 "连字符链接的单词看成一个整体
 "set iskeyword +=-
+"syntastic
+let g:syntastic_error_symbol='>>'
+let g:syntastic_warning_symbol='>'
+let g:syntastic_check_on_open=1
+let g:syntastic_check_on_wq=0
+let g:syntastic_enable_highlighting=1
+let g:syntastic_python_checkers=['pyflakes'] " 使用pyflakes,速度比pylint快
+let g:syntastic_javascript_checkers = ['jsl', 'jshint']
+let g:syntastic_html_checkers=['tidy', 'jshint']
+" 修改高亮的背景色, 适应主题
+"highlight SyntasticErrorSign guifg=white guibg=black
+
+" to see error location list
+let g:syntastic_always_populate_loc_list = 0
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_loc_list_height = 5
+function! ToggleErrors()
+	let old_last_winnr = winnr('$')
+	lclose
+	if old_last_winnr == winnr('$')
+		" Nothing was closed, open syntastic error location panel
+		Errors
+	endif
+endfunction
+nnoremap <Leader>s :call ToggleErrors()<cr>
+" nnoremap <Leader>sn :lnext<cr>
+" nnoremap <Leader>sp :lprevious<cr>
 
 "terryma/vim-expand-region 
 vmap v <Plug>(expand_region_expand)

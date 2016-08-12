@@ -32,6 +32,8 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'Lokaltog/vim-powerline'
 "Bundle 'bling/vim-airline'
 "Bundle 'kien/rainbow_parentheses.vim' "kuohao gaoliang ,yiyang
+"Bundle 'xolox/vim-session'
+"Bundle 'xolox/vim-misc'
 "chakan
 Bundle 'taglist.vim'
 Bundle 'majutsushi/tagbar'
@@ -49,7 +51,7 @@ Bundle 'scrooloose/nerdcommenter'
 Plugin 'a.vim'
 
 "bianji
-Plugin 'scrooloose/syntastic'
+"Plugin 'scrooloose/syntastic'
 Bundle 'tpope/vim-surround'
 Bundle 'sjl/gundo.vim'
 Plugin 'jiangmiao/auto-pairs'
