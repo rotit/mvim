@@ -1,4 +1,4 @@
-""""""""""" normal"""""""""""""
+""""""""""" normal """""""""""""
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
@@ -17,6 +17,8 @@ set termencoding=utf-8
 set fileformats=unix
 set nocompatible
 set backspace=2
+
+"""""""""""" me """"""""""""""""""
 "设置搜索时忽略大小写
 set ignorecase
 "设置搜索不回卷
@@ -33,7 +35,11 @@ set nobackup
 set nowritebackup
 set noswapfile
 
-
+"fold
+"set foldmethod=syntax
+"set foldmethod=manual
+"au BufWinLeave * silent mkview
+"au BufWinEnter * silent loadview
 """""""""""" display"""""""""""""
 set cul
 set cuc
@@ -46,26 +52,25 @@ set cindent
 syntax enable
 syntax on  
 winpos 0 22
+set relativenumber "relative number
+
 
 "set nohlsearch "search without highlight
 "colorscheme badwolf
-highlight Normal guibg=#CCCCFF guifg=black
-highlight CursorLine    guibg=#CCbcef
-highlight CursorColumn  guibg=#CCbceF
+"highlight Normal guibg=#CCCCFF guifg=black
+"highlight CursorLine    guibg=#CCbcef
+"highlight CursorColumn  guibg=#CCbceF
 colorscheme solarized
-highlight Normal guifg=#7777FF
+"highlight Normal guifg=#7777FF
 
 "gvim
-set guifont=Monospace\ 14
+"set guifont=Monospace\ 13
 set guioptions-=T           " 隐藏工具栏
 set guioptions-=m           " 隐藏菜单栏
 
 "imap <M-(> ()<ESC>i 
 "imap <M-[> []<ESC>i
 "imap <M-{> {}<ESC>i
-
-
-
   
 """""""""""""" yinshe """""""""""""""
 set winaltkeys=no
@@ -80,22 +85,18 @@ set wildmenu
 nmap <M-e> :w<CR>  :source ~/.vimrc<CR>:e!<CR>
 "nmap <C-1> :source ~/.vim
 
-
 nmap <M-K> <ESC> 
-nmap <C-tab> <C-^> 
+nmap <C-q> <C-^> 
 nmap <M-w> :wincmd p<CR>
-""""""""""""""vbundles"""""""""""""
 
+""""""""""""""vbundles"""""""""""""
 if filereadable(expand("~/.vimrc.bundles"))
 source ~/.vimrc.bundles
 endif
 filetype plugin indent on 
 
-
-
 """"""""""""""plug"""""""""""""""""
-
-"nerdtree
+"""""""nerdtree
 map <F2> :NERDTreeFind<CR>:wincmd p<CR>
 nnoremap <M-F2> <ESC>
 nnoremap <M-F3> :NERDTreeToggle<CR>
@@ -109,6 +110,13 @@ autocmd VimEnter * NERDTreeFind | autocmd VimEnter wincmd p  "进入vim时打开
 "autocmd TabEnter * NERDTreeFind "| wincmd p  "打开tab页时打开 NERDTreeFind窗口
 "autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeType == "primary") | q | endif
 
+
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif  "close if the last window
+"let g:NERDTreeDirArrowExpandable = '▸'
+"let g:NERDTreeDirArrowCollapsible = '▾'
+
+"let g:NERDTreeDirArrowExpandable = ' '
+"let g:NERDTreeDirArrowCollapsible = ' '
 
 let NERDTreeDirArrows=0 "目录箭头 : 1 显示箭头  0传统+-|号 
 let NERDTreeIgnore = ['.*\.o$','.*\.ko$','.*\.gz$']  "忽略后缀为.o，.ko，.gz的文件。
@@ -124,7 +132,7 @@ let NERDTreeHighlightCursorline=1
 let NERDTreeWinSize=40
 "let NERDTreeQuitOnOpen = 1 "close nerdtree when open a file
 
-"nerdtree-git-plugin
+"""""""nerdtree-git-plugin
 let g:NERDTreeIndicatorMapCustom = {
 \ "Modified"  : "✹",
 \ "Staged"    : "✚",
@@ -136,7 +144,8 @@ let g:NERDTreeIndicatorMapCustom = {
 \ "Clean"     : "✔︎",
 \ "Unknown"   : "?"
 \ }
-" 设置winmanager
+
+""""""" 设置winmanager
 " " 设置界面分割
 " let g:winManagerWindowLayout = "TagList|FileExplorer"
 " let g:winManagerWindowLayout = "FileExplorer"
@@ -149,12 +158,11 @@ let g:NERDTreeIndicatorMapCustom = {
 
 "set autochdir
 
-"ctags
+"""""""ctags
 "let Tlist_Ctags_Cmd='ctags'
 "let Tlist_Ctags_Cmd = 'G:/vim/vimfiles/bundle/ctags.vim/plugin'
 
-
-"MiniBufferExplorer
+"""MiniBufferExplorer
     "let g:miniBufExplMapWindowNavVim = 1 " 按下Ctrl+h/j/k/l，可以切换到当前窗口的上下左右窗口
     "let g:miniBufExplMapWindowNavArrows = 1 " 按下Ctrl+箭头，可以切换到当前窗口的上下左右窗口
 	"let g:miniBufExplMapCTabSwitchBufs = 1 " 启用以下两个功能：Ctrl+tab移到下一个buffer并在当前窗口打开；Ctrl+Shift+tab移到上一个buffer并在当前窗口打开；ubuntu好像不支持
@@ -164,7 +172,7 @@ let g:NERDTreeIndicatorMapCustom = {
 "let g:miniBufExplForceSyntaxEnable = 1  
 "let g:miniBufExplorerMoreThanOne=2  
 
-"quick switch buffer
+"""quick switch buffer
 "nnoremap za :call SBQ_PushBuffer()<cr>                     # add current buffer to buffer list
 "nnoremap zd :call SBQ_PopBuffer()<cr>                      # delete current buffer from buffer list
 "nnoremap zs :call SBQ_ShowBufferList()<cr>                 # show the list of buffer list
@@ -173,7 +181,9 @@ let g:NERDTreeIndicatorMapCustom = {
 
 "TagmaBufMgr
 let g:TagmaBufMgrPrefix = '<Leader>t'
-let g:TagmaBufMgrAutoDisplay = 0 "not display
+let g:TagmaBufMgrCloseSelect = 1"close when open a buffer
+let g:TagmaBufMgrAutoDisplay = 0 "0:not display
+
 
 "easymotion
 let g:EasyMotion_smartcase = 1
@@ -193,17 +203,17 @@ map <Leader><leader>. <Plug>(easymotion-repeat)
 "nnoremap <silent> <F12> :A<CR>  
 nnoremap <M-c> :A<CR>  
 
-
 "taglist
 "let Tlist_WinWidt =28                    "设置taglist的宽度
 let Tlist_Show_One_File=1               "不同时显示多个文件的tag，只显示当前文件的
 let Tlist_Exit_OnlyWindow=1  
 let Tlist_Use_Right_Window = 1         "在右侧窗口中显示taglist窗口
-set updatetime=200
+set updatetime=1000
 "let Tlist_Use_Left_Windo =1                "在左侧窗口中显示taglist窗口
-set tags=tags
-nmap <F6> :set tags=/home/tdk/work/guoke/GK710X_LinuxSDK_v1.1.2/linux/kernel/3.4.43/tags<CR>
+set tags+=tags
+nmap <F7> :set tags=/home/tdk/work/guoke/GK710X_LinuxSDK_v1.1.2/linux/kernel/3.4.43/tags<CR>
 map <F5> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+map <F6> :cscope -bqki file<CR>:cs add .<CR>
 nmap <silent> <F9> <ESC>:Tlist<RETURN>
 
 nmap <F3> :tprevious<CR>
@@ -256,12 +266,11 @@ let g:tagbar_type_cpp = {
 \ }
 
 "SUPERtabber
-imap <F12> <C-n><C-p>
 imap ll <C-n><C-p>
-
 
 "Powerline
 let g:Powerline_symbols = 'unicode'
+"let g:Powerline_symbols = 'fancy'
 let g:Powerline_stl_path_style = 'relative' "filename
 let g:Powerline_mode_n = 'N'
 set laststatus=2
@@ -273,14 +282,14 @@ call Pl#Theme#RemoveSegment('lineinfo')
 "call Pl#Theme#RemoveSegment('scrollpercent')
 "Note: Remember to clear your cache with |:PowerlineClearCache| after changing your statusline!
 
-
 "nerdcommen
 let mapleader = ","
 map <M-z> :,c <space><>
+
 "gundo
 nnoremap <leader>h :GundoToggle<CR>
 
-"
+"cscope
 if has("cscope")
 	set csto=1 "0 run cscope
 	set cst
@@ -297,9 +306,10 @@ endif
 set cscopequickfix=s-,c-,d-,i-,t-,e-,g-
 
 
-nmap <C-q> :vsplit<CR><C-]><CR>
+"nmap <C-q> :vsplit<CR><C-]><CR>
 nmap <M-v> :vsplit<CR>
-nmap <M-t> :tab sp<CR>:Tagbar<CR><F2>
+nmap <M-t> :tab sp<CR>:Tagbar<CR><F2>:cs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <C-w>\ :tab sp<CR>: 
 
 "nmap <C-w>T <C-w>T <F2> <F10>
 nmap T :wincmd T <CR> :NERDTreeFind<CR>:wincmd p<CR> :Tagbar<CR>
@@ -311,10 +321,8 @@ nmap <M-k> :cprev<CR>
 nmap <M-3> :cprev<CR>
 nmap <M-4> :cnext<CR>
 
-nmap <M-i> <C-i><CR>
-nmap <M-o> <C-o><CR>
-nmap <M-1> <C-o><CR>
-nmap <M-2> <C-i><CR>
+nmap <M-1> <C-o>
+nmap <M-2> <C-i>
 
 nmap <M-,> :cw<CR>
 nmap <M-.> :ccl<CR>
@@ -373,7 +381,10 @@ let OmniCpp_ShowAccess=1
 """""""""""" bianji""""""""""""""
 "连字符链接的单词看成一个整体
 "set iskeyword +=-
+
 "syntastic
+nmap J j
+nmap K k
 let g:syntastic_error_symbol='>>'
 let g:syntastic_warning_symbol='>'
 let g:syntastic_check_on_open=1
@@ -405,8 +416,11 @@ nnoremap <Leader>s :call ToggleErrors()<cr>
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 
+"tabe,qiehuan
+auto tableave * let g:pre_tabpagenr=tabpagenr()
+nnoremap <silent> \t :exe "tabn ".g:pre_tabpagenr<CR>
 
-winpos 0 22
-highlight Normal guifg=#7777FF
+"winpos 0 22
+"highlight Normal guifg=#7777FF
 
 

@@ -16,11 +16,6 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-"Plugin 'tpope/vim-fugitive'
-
-"Bundle 'christoomey/vim-run-interactive'
 
 "mulu
 Bundle 'scrooloose/nerdtree'
@@ -80,6 +75,10 @@ Plugin 'molokai'
 
 
 
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
+"Plugin 'tpope/vim-fugitive'
+"Bundle 'christoomey/vim-run-interactive'
 
 " plugin from http://vim-scripts.org/vim/scripts.html
 "Plugin 'L9'
