@@ -210,12 +210,13 @@ let Tlist_Exit_OnlyWindow=1
 let Tlist_Use_Right_Window = 1         "在右侧窗口中显示taglist窗口
 set updatetime=1000
 "let Tlist_Use_Left_Windo =1                "在左侧窗口中显示taglist窗口
+map <F5> :!cscope -Rbqki file <CR><CR>:cs reset <CR><CR>
+map <F6> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+
 set tags+=tags
 nmap <F7> :set tags=/home/tdk/work/guoke/GK710X_LinuxSDK_v1.1.2/linux/kernel/3.4.43/tags<CR>
-map <F5> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
-map <F6> :cscope -bqki file<CR>:cs add .<CR>
-nmap <silent> <F9> <ESC>:Tlist<RETURN>
 
+nmap <silent> <F9> <ESC>:Tlist<RETURN>
 nmap <F3> :tprevious<CR>
 nmap <F4> :tnext<CR>
 nmap <M-u> :TlistUpdate<CR>
@@ -308,11 +309,12 @@ set cscopequickfix=s-,c-,d-,i-,t-,e-,g-
 
 "nmap <C-q> :vsplit<CR><C-]><CR>
 nmap <M-v> :vsplit<CR>
-nmap <M-t> :tab sp<CR>:Tagbar<CR><F2>:cs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <M-g> :tab sp<CR>:Tagbar<CR><F2>:cs find g <C-R>=expand("<cword>")<CR><CR>
 nmap <C-w>\ :tab sp<CR>: 
 
 "nmap <C-w>T <C-w>T <F2> <F10>
 nmap T :wincmd T <CR> :NERDTreeFind<CR>:wincmd p<CR> :Tagbar<CR>
+nmap t:tab sp<CR> 
 
 "nmap <S-j> :<M-t> "<C-w>]
 
