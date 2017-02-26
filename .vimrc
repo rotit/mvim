@@ -17,6 +17,7 @@ set termencoding=utf-8
 set fileformats=unix
 set nocompatible
 set backspace=2
+set belloff=all " 所有事件下（包括错按esc，错按backspace）不发出声音
 
 """""""""""" me """"""""""""""""""
 "设置搜索时忽略大小写
@@ -35,6 +36,8 @@ set nobackup
 set nowritebackup
 set noswapfile
 
+set wildmenu " vim 自身命令行模式智能补全
+
 "fold
 "set foldmethod=syntax
 "set foldmethod=manual
@@ -51,7 +54,7 @@ set cindent
 
 syntax enable
 syntax on  
-winpos 0 22
+"winpos 0 22
 set relativenumber "relative number
 
 
@@ -73,21 +76,18 @@ set guioptions-=m           " 隐藏菜单栏
 "imap <M-{> {}<ESC>i
   
 """""""""""""" yinshe """""""""""""""
-set winaltkeys=no
-nmap <silent> <F1> <ESC>:e ++ff=dos<RETURN>
+set winaltkeys=no"no used alt for menu,only use by mouse
+"nmap <silent> <F1> <ESC>:e ++ff=dos<RETURN>
 
 imap <C-a> <Esc>^
 imap <C-e> <Esc>$
 
-" vim 自身命令行模式智能补全
-set wildmenu
-
 nmap <M-e> :w<CR>  :source ~/.vimrc<CR>:e!<CR>
-"nmap <C-1> :source ~/.vim
 
-nmap <M-K> <ESC> 
+imap <M-K> <ESC> 
 nmap <C-q> <C-^> 
-nmap <M-w> :wincmd p<CR>
+"nmap <M-w> :wincmd p<CR>
+"nmap <C-1> :source ~/.vim
 
 """"""""""""""vbundles"""""""""""""
 if filereadable(expand("~/.vimrc.bundles"))
@@ -305,42 +305,35 @@ endif
 
 "cl cn cp
 set cscopequickfix=s-,c-,d-,i-,t-,e-,g-
-
-
+noremap <F11> :set cscopequickfix=s+,c+,d+,i+,t+,e+,g+ <CR>
+noremap <M-F11> :set cscopequickfix=s-,c-,d-,i-,t-,e-,g- <CR>
 "nmap <C-q> :vsplit<CR><C-]><CR>
-nmap <M-v> :vsplit<CR>
-nmap <M-g> :tab sp<CR>:Tagbar<CR><F2>:cs find g <C-R>=expand("<cword>")<CR><CR>
-nmap <C-w>\ :tab sp<CR>: 
+"nmap <M-v> :vsplit<CR>
+nmap <C-w>\ :tab sp<CR>
 
-"nmap <C-w>T <C-w>T <F2> <F10>
-nmap T :wincmd T <CR> :NERDTreeFind<CR>:wincmd p<CR> :Tagbar<CR>
-nmap t:tab sp<CR> 
-
-"nmap <S-j> :<M-t> "<C-w>]
-
-nmap <M-j> :cnext<CR>
-nmap <M-k> :cprev<CR>
-nmap <M-3> :cprev<CR>
+"jump
+nmap <M-k> :col<CR>
+nmap <M-j> :cnew<CR>
+nmap <C-j> :cnext<CR>
+nmap <C-k> :cprev<CR>
 nmap <M-4> :cnext<CR>
+nmap <M-3> :cprev<CR>
+nmap T :wincmd T <CR> :NERDTreeFind<CR>:wincmd p<CR> :Tagbar<CR>
+nmap <M-f> :tab botright cw<CR>
 
-nmap <M-1> <C-o>
-nmap <M-2> <C-i>
+noremap <M-1> <C-o>
+noremap <M-2> <C-i>
 
-nmap <M-,> :cw<CR>
-nmap <M-.> :ccl<CR>
-nmap <M-s> :botright cw<CR>
-nmap <M-s><M-s> :ccl<CR>
+"list
 nmap <C-w>o <ESC>
+nmap <M-d> :botright cw<CR>
+nmap <M-d><M-d> :ccl<CR>
 
-nmap <C-s>s :scs find s <C-R>=expand("<cword>")<CR><CR>
-nmap <C-s>g :scs find g <C-R>=expand("<cword>")<CR><CR>
-nmap <C-s>c :scs find c <C-R>=expand("<cword>")<CR><CR>
-nmap <C-s>t :scs find t <C-R>=expand("<cword>")<CR><CR>
-nmap <C-s>e :scs find e <C-R>=expand("<cword>")<CR><CR>
-nmap <C-s>f :scs find f <C-R>=expand("<cfile>")<CR><CR>
-nmap <C-s>i :scs find i <C-R>=expand("<cfile>")<CR><CR>
-nmap <C-s>d :scs find d <C-R>=expand("<cword>")<CR><CR>
-
+"search
+"nmap <M-g> :tab sp<CR>:Tagbar<CR><F2>:cs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <M-g> :tab sp<CR>:Tagbar<CR>:cs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <M-c> :tab sp<CR>:Tagbar<CR>:cs find c <C-R>=expand("<cword>")<CR><CR>
+nmap <M-s> :tab sp<CR>:Tagbar<CR>:cs find s <C-R>=expand("<cword>")<CR><CR>
 
 nmap <C-c>s :cs find s <C-R>=expand("<cword>")<CR><CR>
 nmap <C-c>g :cs find g <C-R>=expand("<cword>")<CR><CR>
@@ -350,6 +343,15 @@ nmap <C-c>e :cs find e <C-R>=expand("<cword>")<CR><CR>
 nmap <C-c>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
 nmap <C-c>i :cs find i <C-R>=expand("<cfile>")<CR><CR>
 nmap <C-c>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+
+nmap <C-s>s :scs find s <C-R>=expand("<cword>")<CR><CR>
+nmap <C-s>g :scs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <C-s>c :scs find c <C-R>=expand("<cword>")<CR><CR>
+nmap <C-s>t :scs find t <C-R>=expand("<cword>")<CR><CR>
+nmap <C-s>e :scs find e <C-R>=expand("<cword>")<CR><CR>
+nmap <C-s>f :scs find f <C-R>=expand("<cfile>")<CR><CR>
+nmap <C-s>i :scs find i <C-R>=expand("<cfile>")<CR><CR>
+nmap <C-s>d :scs find d <C-R>=expand("<cword>")<CR><CR>
 
 nmap <C-h>s :vsp<CR>:cs find s <C-R>=expand("<cword>")<CR><CR>
 nmap <C-h>g :vsp<CR>:cs find g <C-R>=expand("<cword>")<CR><CR>
@@ -418,6 +420,24 @@ nnoremap <Leader>s :call ToggleErrors()<cr>
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 
+"tpope/vim-surround
+"ds  - delete a surrounding
+"cs  - change a surrounding
+"ys  - add a surrounding
+"yS  - add a surrounding and place the surrounded text on a new line + indent it
+"yss - add a surrounding to the whole line
+"ySs - add a surrounding to the whole line, place it on a new line + indent it
+"ySS - same as ySs
+
+"Hello w|orld!     ysiw)        Hello (world)!
+"Hello w|orld!     csw)         Hello (world)!
+"fo|o              ysiwt<html>  <html>foo</html>
+"foo quu|x baz     yss"         "foo quux baz"
+"foo quu|x baz     ySS"         "
+
+"for more line {}, (shift)v->chose,(shift)s+{}
+
+
 "tabe,qiehuan
 auto tableave * let g:pre_tabpagenr=tabpagenr()
 nnoremap <silent> \t :exe "tabn ".g:pre_tabpagenr<CR>
@@ -434,8 +454,11 @@ nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
 "nmap <F4> :YcmDiags<CR>
 
+let g:ycm_path_to_python_interpreter='/usr/bin/python3'
 "设置全局配置文件的路径
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
+"let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
+"let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = '/sdb/tdk/linux-3.18.y/.ycm_extra_conf.py'
 "开启基于tag的补全，可以在这之后添加需要的标签路径
 let g:ycm_collect_identifiers_from_tags_files = 1
 "开启语义补全
@@ -455,8 +478,3 @@ let g:ycm_use_ultisnips_completer=0
 
 nnoremap <leader>y :let g:ycm_auto_trigger=0<CR>                " turn off YCM
 nnoremap <leader>Y :let g:ycm_auto_trigger=1<CR>                "turn on YCM
-
-"winpos 0 22
-"highlight Normal guifg=#7777FF
-
-
