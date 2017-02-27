@@ -18,20 +18,20 @@ Plugin 'VundleVim/Vundle.vim'
 
 
 "mulu
-Bundle 'scrooloose/nerdtree'
-"Bundle 'jistr/vim-nerdtree-tabs.git'
-Bundle 'Xuyuanp/nerdtree-git-plugin'
-Bundle 'kien/ctrlp.vim'
+Plugin 'scrooloose/nerdtree'
+"Plugin 'jistr/vim-nerdtree-tabs.git'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'kien/ctrlp.vim'
 
 "meihua
-Bundle 'Lokaltog/vim-powerline'
-"Bundle 'bling/vim-airline'
-"Bundle 'kien/rainbow_parentheses.vim' "kuohao gaoliang ,yiyang
-"Bundle 'xolox/vim-session'
-"Bundle 'xolox/vim-misc'
+Plugin 'Lokaltog/vim-powerline'
+"Plugin 'bling/vim-airline'
+"Plugin 'kien/rainbow_parentheses.vim' "kuohao gaoliang ,yiyang
+"Plugin 'xolox/vim-session'
+"Plugin 'xolox/vim-misc'
 "chakan
-Bundle 'taglist.vim'
-Bundle 'majutsushi/tagbar'
+Plugin 'taglist.vim'
+Plugin 'majutsushi/tagbar'
 
 "buquan
 "Plugin 'OmniCppComplete'
@@ -39,23 +39,23 @@ Bundle 'majutsushi/tagbar'
 "Plugin 'ervandew/supertab'
 
 "zhushi
-Bundle 'scrooloose/nerdcommenter'
-"Bundle 'The-NERD-tree'
+Plugin 'scrooloose/nerdcommenter'
+"Plugin 'The-NERD-tree'
 
 "qiehuan
 Plugin 'a.vim'
 
 "bianji
 "Plugin 'scrooloose/syntastic'
-Bundle 'tpope/vim-surround'
-Bundle 'sjl/gundo.vim'
+Plugin 'tpope/vim-surround'
+Plugin 'sjl/gundo.vim'
 Plugin 'jiangmiao/auto-pairs'
-Bundle 'Valloric/YouCompleteMe'
-Bundle 'rdnetto/YCM-Generator', { 'branch': 'stable'} 
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'rdnetto/YCM-Generator', { 'branch': 'stable'} 
 Plugin 'terryma/vim-expand-region' "这个插件用来扩展选择的内容。比方说当前光标在一对双引号中，双引号包含在一对括号中，此时敲击 + 可以选中双引号中的内容，再敲击 + 可以选中括号中的内容。我将其绑定为最大的空格键以显示我对这个插件的虔诚。
 
 "tiaozhuan
-Bundle 'Lokaltog/vim-easymotion'
+Plugin 'Lokaltog/vim-easymotion'
 
 "buffer
 "Plugin 'minibufexpl.vim'
@@ -79,11 +79,11 @@ Plugin 'molokai'
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
 "Plugin 'tpope/vim-fugitive'
-"Bundle 'christoomey/vim-run-interactive'
+"Plugin 'christoomey/vim-run-interactive'
 
 " plugin from http://vim-scripts.org/vim/scripts.html
 "Plugin 'L9'
-"Bundle 'ctags.vim'
+"Plugin 'ctags.vim'
 
 " Git plugin not hosted on GitHub
 "Plugin 'git://git.wincent.com/command-t.git'

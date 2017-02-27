@@ -76,11 +76,14 @@ set guioptions-=m           " 隐藏菜单栏
 "imap <M-{> {}<ESC>i
   
 """""""""""""" yinshe """""""""""""""
-set winaltkeys=no"no used alt for menu,only use by mouse
+set winaltkeys=no "no used alt for menu,only use by mouse
 "nmap <silent> <F1> <ESC>:e ++ff=dos<RETURN>
 
 imap <C-a> <Esc>^
 imap <C-e> <Esc>$
+
+" vim 自身命令行模式智能补全
+set wildmenu
 
 nmap <M-e> :w<CR>  :source ~/.vimrc<CR>:e!<CR>
 
@@ -210,7 +213,8 @@ let Tlist_Exit_OnlyWindow=1
 let Tlist_Use_Right_Window = 1         "在右侧窗口中显示taglist窗口
 set updatetime=1000
 "let Tlist_Use_Left_Windo =1                "在左侧窗口中显示taglist窗口
-map <F5> :!cscope -Rbqki file <CR><CR>:cs reset <CR><CR>
+"map <F5> :!cscope -Rbqki file <CR><CR>:cs reset <CR><CR>
+nmap <F5> :!cscope -Rbqk <CR><CR>:cs reset <CR><CR>
 map <F6> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
 set tags+=tags
