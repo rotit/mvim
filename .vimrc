@@ -79,8 +79,8 @@ set guioptions-=m           " 隐藏菜单栏
 set winaltkeys=no "no used alt for menu,only use by mouse
 "nmap <silent> <F1> <ESC>:e ++ff=dos<RETURN>
 
-imap <C-a> <Esc>^
-imap <C-e> <Esc>$
+"imap <C-a> <Esc>^
+"imap <C-e> <Esc>$
 
 " vim 自身命令行模式智能补全
 set wildmenu
@@ -316,12 +316,12 @@ noremap <M-F11> :set cscopequickfix=s-,c-,d-,i-,t-,e-,g- <CR>
 nmap <C-w>\ :tab sp<CR>
 
 "jump
-nmap <M-k> :col<CR>
-nmap <M-j> :cnew<CR>
-nmap <C-j> :cnext<CR>
-nmap <C-k> :cprev<CR>
-nmap <M-4> :cnext<CR>
-nmap <M-3> :cprev<CR>
+noremap <M-k> :col<CR>
+noremap <M-j> :cnew<CR>
+noremap <C-j> :cnext<CR>
+noremap <C-k> :cprev<CR>
+noremap <M-4> :cnext<CR>
+noremap <M-3> :cprev<CR>
 nmap T :wincmd T <CR> :NERDTreeFind<CR>:wincmd p<CR> :Tagbar<CR>
 nmap <M-f> :tab botright cw<CR>
 
@@ -459,18 +459,19 @@ nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
 "nmap <F4> :YcmDiags<CR>
 
 let g:ycm_path_to_python_interpreter='/usr/bin/python3'
+inoremap <C-s> <C-[>a<C-p><C-n>
 "设置全局配置文件的路径
 "let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
 "let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 let g:ycm_global_ycm_extra_conf = '/sdb/tdk/linux-3.18.y/.ycm_extra_conf.py'
-"开启基于tag的补全，可以在这之后添加需要的标签路径
+"开启基于tag的补全，可以在这之后添加需要的标签路径 在vim中使用 :echo tagfiles()可以查看当前使用的tags文件
 let g:ycm_collect_identifiers_from_tags_files = 1
 "开启语义补全
 let g:ycm_seed_identifiers_with_syntax = 1
 "在接受补全后不分裂出一个窗口显示接受的项
 "set completeopt-=preview
 "不显示开启vim时检查ycm_extra_conf文件的信息
-let g:ycm_confirm_extra_conf=0
+let g:ycm_confirm_extra_conf=1
 "每次重新生成匹配项，禁止缓存匹配项
 "let g:ycm_cache_omnifunc=0
 "在注释中也可以补全
@@ -478,7 +479,7 @@ let g:ycm_confirm_extra_conf=0
 "输入第一个字符就开始补全
 let g:ycm_min_num_of_chars_for_completion=1
 "不查询ultisnips提供的代码模板补全，如果需要，设置成1即可
-let g:ycm_use_ultisnips_completer=0
-
+let g:ycm_use_ultisnips_completer=1
+let g:ycm_key_invoke_completion = '<C-a>'
 nnoremap <leader>y :let g:ycm_auto_trigger=0<CR>                " turn off YCM
 nnoremap <leader>Y :let g:ycm_auto_trigger=1<CR>                "turn on YCM
