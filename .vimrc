@@ -82,6 +82,23 @@ set winaltkeys=no "no used alt for menu,only use by mouse
 "imap <C-a> <Esc>^
 "imap <C-e> <Esc>$
 
+"i+alt+num switch to tab num
+inoremap <M-1> <C-[>1gt
+inoremap <M-2> <C-[>2gt
+inoremap <M-3> <C-[>3gt
+inoremap <M-4> <C-[>4gt
+inoremap <M-5> <C-[>5gt
+inoremap <M-6> <C-[>6gt
+
+"sp a windor to difinition under the curso :i,,
+inoremap <Leader><leader> <C-[>:sp<CR>:YcmCompleter GoToImprecise<CR>:wincmd p<CR>
+nmap cp <C-w>p:close<CR> 
+
+"alt+q:sp window scroll up a raw, alt+w: sp window scroll down a raw
+noremap <M-w> :wincmd p<CR><C-e>:wincmd p<CR>
+noremap <M-q> :wincmd p<CR><C-y>:wincmd p<CR>
+
+
 " vim 自身命令行模式智能补全
 set wildmenu
 
@@ -101,20 +118,11 @@ filetype plugin indent on
 """"""""""""""plug"""""""""""""""""
 """""""nerdtree
 map <F2> :NERDTreeFind<CR>:wincmd p<CR>
-nnoremap <M-F2> <ESC>
 nnoremap <M-F3> :NERDTreeToggle<CR>
-"autocmd BufEnter * silent! if bufname('%') !~# 'NERD_tree_' | cd %:p:h | NERDTreeFind | wincmd p | endif
 
-"autocmd bufenter * if (winnr("$") == 1 ) | q | endif
- autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeType == "primary") | q | endif
-"map <F4> :NERDTree<CR>
-
-autocmd VimEnter * NERDTreeFind | autocmd VimEnter wincmd p  "进入vim时打开 NERDTreeFind窗口                                                                 
-"autocmd TabEnter * NERDTreeFind "| wincmd p  "打开tab页时打开 NERDTreeFind窗口
-"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeType == "primary") | q | endif
-
-
+autocmd VimEnter * NERDTreeFind | autocmd VimEnter wincmd p  "进入vim时打开 NERDTreeFind窗口                                    
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif  "close if the last window
+
 "let g:NERDTreeDirArrowExpandable = '▸'
 "let g:NERDTreeDirArrowCollapsible = '▾'
 
@@ -132,7 +140,7 @@ let NERDTreeShowHidden=1
 let NERDTreeShowLineNumbers=0
 let NERDTreeHighlightCursorline=1 
 "let NERDTreeWinPos='left'
-let NERDTreeWinSize=40
+let NERDTreeWinSize=30
 "let NERDTreeQuitOnOpen = 1 "close nerdtree when open a file
 
 """""""nerdtree-git-plugin
@@ -211,7 +219,7 @@ nnoremap <M-c> :A<CR>
 let Tlist_Show_One_File=1               "不同时显示多个文件的tag，只显示当前文件的
 let Tlist_Exit_OnlyWindow=1  
 let Tlist_Use_Right_Window = 1         "在右侧窗口中显示taglist窗口
-set updatetime=1000
+"set updatetime=1000
 "let Tlist_Use_Left_Windo =1                "在左侧窗口中显示taglist窗口
 "map <F5> :!cscope -Rbqki file <CR><CR>:cs reset <CR><CR>
 nmap <F5> :!cscope -Rbqk <CR><CR>:cs reset <CR><CR>
@@ -270,8 +278,6 @@ let g:tagbar_type_cpp = {
    \ }
 \ }
 
-"SUPERtabber
-imap ll <C-n><C-p>
 
 "Powerline
 let g:Powerline_symbols = 'unicode'
@@ -296,7 +302,7 @@ nnoremap <leader>h :GundoToggle<CR>
 
 "cscope
 if has("cscope")
-	set csto=1 "0 run cscope
+	set csto=0 "0 run cscope
 	set cst
 	set nocsverb
 	" add any database in current directory
@@ -389,7 +395,11 @@ let OmniCpp_ShowAccess=1
 """""""""""" bianji""""""""""""""
 "连字符链接的单词看成一个整体
 "set iskeyword +=-
-
+" showing diff level of parentheses in diff color
+let g:rainbow_active = 1
+"如果在 A 文件里进行了某些修改，然后切换到 B 文件，然后又切换回 A 文件，此时无法用"u"执行撤销！这是 Vim 的默认行为，不是本插件导致的。
+"解决方法有两种，第一种是在vimrc 里面加入"set hidden"；第二种是设置成 persistent undo。 
+set hidden
 "syntastic
 nmap J j
 nmap K k
@@ -420,11 +430,11 @@ nnoremap <Leader>s :call ToggleErrors()<cr>
 " nnoremap <Leader>sn :lnext<cr>
 " nnoremap <Leader>sp :lprevious<cr>
 
-"terryma/vim-expand-region 
+"""""""terryma/vim-expand-region 
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 
-"tpope/vim-surround
+"""""""tpope/vim-surround
 "ds  - delete a surrounding
 "cs  - change a surrounding
 "ys  - add a surrounding
@@ -446,32 +456,32 @@ vmap <C-v> <Plug>(expand_region_shrink)
 auto tableave * let g:pre_tabpagenr=tabpagenr()
 nnoremap <silent> \t :exe "tabn ".g:pre_tabpagenr<CR>
 
-"""""""""ycm""""""""
+"""""""ycm
 "设置error和warning的提示符，如果没有设置，ycm会以syntastic的
 " g:syntastic_warning_symbol 和 g:syntastic_error_symbol 这两个为准
 "let g:ycm_error_symbol='>>'
 "let g:ycm_warning_symbol='>*'
 
 "设置跳转的快捷键，可以跳转到definition和declaration
-nnoremap <leader>gc :YcmCompleter GoToDeclaration<CR>
-nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>gs :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>gd :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>gh :YcmCompleter GoToInclude<CR>
 nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
 "nmap <F4> :YcmDiags<CR>
 
-let g:ycm_path_to_python_interpreter='/usr/bin/python3'
+let g:ycm_path_to_python_interpreter='/usr/bin/python'
 inoremap <C-s> <C-[>a<C-p><C-n>
 "设置全局配置文件的路径
-"let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
 "let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
-let g:ycm_global_ycm_extra_conf = '/sdb/tdk/linux-3.18.y/.ycm_extra_conf.py'
 "开启基于tag的补全，可以在这之后添加需要的标签路径 在vim中使用 :echo tagfiles()可以查看当前使用的tags文件
 let g:ycm_collect_identifiers_from_tags_files = 1
 "开启语义补全
 let g:ycm_seed_identifiers_with_syntax = 1
 "在接受补全后不分裂出一个窗口显示接受的项
 "set completeopt-=preview
-"不显示开启vim时检查ycm_extra_conf文件的信息
-let g:ycm_confirm_extra_conf=1
+"开启vim时检查ycm_extra_conf文件的信息显示, 1:on ,2:off
+let g:ycm_confirm_extra_conf=0
 "每次重新生成匹配项，禁止缓存匹配项
 "let g:ycm_cache_omnifunc=0
 "在注释中也可以补全
@@ -483,3 +493,23 @@ let g:ycm_use_ultisnips_completer=1
 let g:ycm_key_invoke_completion = '<C-a>'
 nnoremap <leader>y :let g:ycm_auto_trigger=0<CR>                " turn off YCM
 nnoremap <leader>Y :let g:ycm_auto_trigger=1<CR>                "turn on YCM
+
+"""""""a.vim
+":A 头文件／源文件切换
+":AS 分割窗后并切换头/源文件(切割为上下两个窗口)
+":AV 垂直切割窗口后切换头/源文件(切割为左右两个窗口)
+":AT 新建Vim标签式窗口后切换
+":AN 在多个匹配文件间循环切换
+"将光标所在处单词作为文件名打开
+":IH 切换至光标所在文件
+":IHS 分割窗口后切换至光标所在文件(指将光标所在处单词作为文件名打开)
+":IHV 垂直分割窗口后切换
+":IHT 新建标签式窗口后切换
+":IHN 在多个匹配文件间循环切换
+"快捷键操作
+"<Leader>ih 切换至光标所在文件*
+"<Leader>is 切换至光标所在处(单词所指)文件的配对文件(如光标所在处为foo.h，则切换至foo.c/foo.cpp...)
+"<Leader>ihn 在多个匹配文件间循环切换
+
+
+
