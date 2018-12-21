@@ -19,19 +19,27 @@ Plugin 'VundleVim/Vundle.vim'
 
 "mulu
 Plugin 'scrooloose/nerdtree'
-"Plugin 'jistr/vim-nerdtree-tabs.git'
+Plugin 'jistr/vim-nerdtree-tabs'
 "Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'kien/ctrlp.vim'
 
 "meihua
 Plugin 'Lokaltog/vim-powerline'
+"Plugin 'Yggdroot/indentLine'
+Plugin 'nathanaelkane/vim-indent-guides'
 "Plugin 'bling/vim-airline'
 "Plugin 'kien/rainbow_parentheses.vim' "kuohao gaoliang ,yiyang
 "Plugin 'xolox/vim-session'
 "Plugin 'xolox/vim-misc'
+
+"marks
+"Plugin 'ShowMarks'
+"Plugin 'Marks-Browser'
+Plugin 'kshenoy/vim-signature'
 "chakan
 Plugin 'taglist.vim'
 Plugin 'majutsushi/tagbar'
+"Plugin 'tacahiroy/ctrlp-funky'
 
 "buquan
 "Plugin 'OmniCppComplete'
@@ -54,7 +62,8 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'rdnetto/YCM-Generator', { 'branch': 'stable'} 
 Plugin 'terryma/vim-expand-region' "这个插件用来扩展选择的内容。比方说当前光标在一对双引号中，双引号包含在一对括号中，此时敲击 + 可以选中双引号中的内容，再敲击 + 可以选中括号中的内容。我将其绑定为最大的空格键以显示我对这个插件的虔诚。
 Plugin 'luochen1990/rainbow' "showing diff level of parentheses in diff color 
-
+"Plugin 'kien/rainbow_parentheses.vim'
+Plugin 'Shougo/unite-outline'
 "tiaozhuan
 Plugin 'Lokaltog/vim-easymotion'
 
