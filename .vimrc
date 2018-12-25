@@ -1,4 +1,4 @@
-""""""""""" normal """""""""""""
+"""""""""""""""normal""""""""""""""
 set tabstop=4 ":set ts=4 tabstop设置成4个空格,tab替换为空格:set expandtab %retab!; 空格替换为tab:set noexpandtab %retab!
 set noexpandtab 
 set softtabstop=4
@@ -18,7 +18,7 @@ set nocompatible
 set backspace=2
 set belloff=all "所有事件下（包括错按esc，错按backspace）不发出声音
 
-"""""""""""" me """"""""""""""""""
+"""""""""""""""me""""""""""""""
 set ignorecase "设置搜索时忽略大小写
 set nowrapscan "设置搜索不回卷
 set mouse=a "设置在Vim中可以使用鼠标 防止在Linux终端下无法拷贝
@@ -30,23 +30,16 @@ set noswapfile
 
 "set foldmethod=indent
 set foldcolumn=3
-let vfile = expand("%") . ".view"
-if filereadable(expand("%") . "view") 
-"execute "source " . vfile
-"source "%" . "view"
-!source a.c.view
-endif
+
 "au BufWinLeave * silent mkview
 "au BufWinEnter * silent loadview
 
-"""""""""""" bianji""""""""""""""
+"""""""""""""""bianji""""""""""""""
 "set iskeyword +=- "连字符链接的单词看成一个整体
 set hidden "如果在 A 文件里进行了某些修改，然后切换到 B 文件，然后又切换回 A 文件，此时无法用"u"执行撤销！这是 Vim 的默认行为，不是本插件导致的。
 "解决方法有两种，第一种是在vimrc 里面加入"set hidden"；第二种是设置成 persistent undo。 
 
-
-
-""""""""""""""""display"""""""""""""
+"""""""""""""""display""""""""""""""
 syntax enable
 syntax on  
 set cul
@@ -84,7 +77,6 @@ endif
 	"let filename = fnamemodify (label, ':t')
 	"return filename
 "endfunction
-
 "set guitablabel=%{ShortTabLabel()}
 "set nohlsearch "search without highlight
 "highlight Normal guifg=#7777FF
@@ -92,8 +84,7 @@ endif
 "highlight CursorLine    guibg=#CCbcef
 "highlight CursorColumn  guibg=#CCbceF
 
-
-""""""""""""""""yinshe""""""""""""""
+"""""""""""""""yinshe""""""""""""""
 "insert operation
 inoremap <M-1> <C-[>1gt "i+alt+num switch to tab num
 inoremap <M-2> <C-[>2gt
@@ -131,16 +122,19 @@ noremap <F4> :tnext<CR>
 noremap <F5> :!cscope -Rbqk <CR><CR>:cs reset <CR><CR>
 "noremap <F5> :!cscope -Rbqki file <CR><CR>:cs reset <CR><CR>
 noremap <F6> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
-noremap <F7> :set tags=/home/xxx/
+noremap <M+F6> :set tags=/home/xxx/
 
-noremap <F8> :execute "mkview"  vfile<CR>
-""""""""""""""vbundles""""""""""""""
+"fdm
+noremap <F7> :mkview!  %.view<CR>
+noremap <F8> :source %.view<CR>
+
+"""""""""""""""vbundles""""""""""""""
 if filereadable(expand("~/.vimrc.bundles")) 
 source ~/.vimrc.bundles
 endif
 filetype plugin indent on 
 
-""""""""""""""plug"""""""""""""""""""
+"""""""""""""""plug""""""""""""""
 """indentLine
 "let g:indentLine_char = '|'             "设置对齐线的字符
 "let g:indentLine_first_char = ''              "设置对齐线的首字符
@@ -156,7 +150,7 @@ let g:indent_guides_guide_size = 1
 
 """nerdtree
 noremap <F2> :NERDTreeFind<CR>:wincmd p<CR>
-noremap <M-F3> :NERDTreeMirrorToggle<CR>
+noremap <M-F3> :NERDTreeToggle<CR>
 
 autocmd VimEnter * NERDTreeFind | autocmd VimEnter wincmd p  "进入vim时打开 NERDTreeFind窗口
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif  "close if the last window
@@ -408,7 +402,7 @@ noremap <F11> :set cscopequickfix=s-,c-,d-,i-,t-,e- <CR>
 noremap <M-F11> :set cscopequickfix=s-,c-,d-,i-,t-,e-,g- <CR>
 "noremap <F11> :set cscopequickfix=s+,c+,d+,i+,t+,e+,g+ <CR>
 noremap <C-w>\ :tab sp<CR>
-noremap <C-t> :colder<CR>:cc<CR> "当使用quickfix窗口后，原先的tagstack和Ctrl-t键会失效。为弥补这不足，可以将Ctrl-t重新地定义
+"noremap <C-t> :colder<CR>:cc<CR> "当使用quickfix窗口后，原先的tagstack和Ctrl-t键会失效。为弥补这不足，可以将Ctrl-t重新地定义
 "noremap T :wincmd T <CR> :NERDTreeFind<CR>:wincmd p<CR> :Tagbar<CR>
 noremap <M-f> :tab botright cw<CR>
 noremap <M-d> :botright cw<CR> "list
@@ -499,4 +493,3 @@ let g:ycm_key_invoke_completion = '<C-a>'
 
 """rainbow
 let g:rainbow_active = 1 "showing diff level of parentheses in diff color
-
