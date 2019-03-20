@@ -204,6 +204,7 @@ let g:nerdtree_tabs_focus_on_files=1
 noremap <M-u> :TlistUpdate<CR>
 noremap <silent> <F9> <ESC>:Tlist<RETURN>
 "let Tlist_Ctags_Cmd='ctags' "taglist "默认使用exuberant-ctags.如果没有安装可以指定GNU ctags
+let Tlist_Ctags_Cmd='arduino-ctags'
 "let Tlist_WinWidt =28                  "设置taglist的宽度
 let Tlist_Show_One_File=1               "不同时显示多个文件的tag，只显示当前文件的
 let Tlist_Exit_OnlyWindow=1  
@@ -268,6 +269,7 @@ nnoremap <M-c> :A<CR>
 """tagbar
 "nmap <Leader>tb :TagbarToggle<CR>        "快捷键设置
 noremap <F10> :Tagbar<CR>
+noremap <C-g> :TagbarOpen fj<CR>
 autocmd BufReadPost *.cpp,*.c,*.h,*.hpp,*.cc,*.cxx call tagbar#autoopen()     "如果是c语言的程序的话，tagbar自动开启
 "let g:tagbar_autopreview = 1	"开启自动预览(随着光标在标签上的移动，顶部会出现一个实时的预览窗口)
 let g:tagbar_ctags_bin='arduino-ctags'	"ctags程序的路径
@@ -484,12 +486,23 @@ let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extr
 "let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 let g:ycm_collect_identifiers_from_tags_files = 1 "开启基于tag的补全，可以在这之后添加需要的标签路径 在vim中使用 :echo tagfiles()可以查看当前使用的tags文件
 let g:ycm_seed_identifiers_with_syntax = 1 "开启语义补全
-"set completeopt-=preview "在接受补全后不分裂出一个窗口显示接受的项
+set completeopt-=preview "在接受补全后不分裂出一个窗口显示接受的项
 "let g:ycm_cache_omnifunc=0 "每次重新生成匹配项，禁止缓存匹配项
 let g:ycm_complete_in_comments=1 "在注释中也可以补全
 let g:ycm_min_num_of_chars_for_completion=1 "输入第一个字符就开始补全
-let g:ycm_use_ultisnips_completer=1 "不查询ultisnips提供的代码模板补全，如果需要，设置成1即可
+let g:ycm_use_ultisnips_completer=0 "不查询ultisnips提供的代码模板补全，如果需要，设置成1即可
 let g:ycm_key_invoke_completion = '<C-a>'
 
 """rainbow
 let g:rainbow_active = 1 "showing diff level of parentheses in diff color
+
+"""UltiSnips
+"UltiSnips
+""插入模式下直接通过<C-z>键来触发UltiSnips的代码块补全
+let g:UltiSnipsExpandTrigger="<C-z>"
+"弹出UltiSnips的可用列表,由于不常用, 所以这里设置成了特殊的<C-i>映射
+let g:UltiSnipsListSnippets="<C-i>"
+""<C-f>跳转的到下一个代码块可编辑区
+let g:UltiSnipsJumpForwardTrigger="<C-f>"
+"<C-b>跳转到上一个代码块可编辑区
+let g:UltiSnipsJumpBackwardTrigger="<C-b>"
