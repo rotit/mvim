@@ -60,7 +60,7 @@ Plugin 'a.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'sjl/gundo.vim'
 Plugin 'jiangmiao/auto-pairs'
-Plugin 'Valloric/YouCompleteMe'
+Plugin 'ycm-core/YouCompleteMe'
 Plugin 'rdnetto/YCM-Generator', { 'branch': 'stable'} 
 Plugin 'terryma/vim-expand-region' "这个插件用来扩展选择的内容。比方说当前光标在一对双引号中，双引号包含在一对括号中，此时敲击 + 可以选中双引号中的内容，再敲击 + 可以选中括号中的内容。我将其绑定为最大的空格键以显示我对这个插件的虔诚。
 Plugin 'Shougo/unite-outline'

@@ -485,6 +485,8 @@ nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
 let g:ycm_confirm_extra_conf=1 "开启vim时检查ycm_extra_conf文件的信息显示, 1:on ,2:off
 let g:ycm_path_to_python_interpreter='/usr/bin/python'
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py' "设置全局配置文件的路径
+"let g:ycm_use_clangd = 0 "clangd will be preferred unless set it 0
+let g:ycm_max_diagnostics_to_display = 0 " controls the maximum number of diagnostics shown to the user when errors or warnings are detected in the file. A special value of 0 means there is no limit
 "let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 let g:ycm_collect_identifiers_from_tags_files = 1 "开启基于tag的补全，可以在这之后添加需要的标签路径 在vim中使用 :echo tagfiles()可以查看当前使用的tags文件
 let g:ycm_seed_identifiers_with_syntax = 1 "开启语义补全
