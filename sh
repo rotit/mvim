@@ -5,5 +5,6 @@ rm  ~/.vimrc.bundles
 ln -sv $CUR_DIR/.vimrc ~/.vimrc 
 ln -sv $CUR_DIR/.vimrc.bundles ~/.vimrc.bundles 
 
-#cp hilightfunc/c.vim ~/.vim/synat
-#cp hilightfunc/cpp.vim ~/.vim
+mkdir -p ~/.vim/syntax
+cp hilightfunc/c.vim ~/.vim/syntax/
+cp hilightfunc/cpp.vim ~/.vim/syntax/
