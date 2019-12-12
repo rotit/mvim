@@ -1,14 +1,16 @@
 """""""""""""""normal""""""""""""""
-set tabstop=4 ":set ts=4 tabstop设置成4个空格,tab替换为空格:set expandtab %retab!; 空格替换为tab:set noexpandtab %retab!
-set noexpandtab 
+set tabstop=4	"tab设置成4个空格）
+set noexpandtab   "expandtab选项，用来控制是否将Tab转换为空格。但是这个选项并不会改变已经存在的文本，如果需要应用此设置将所有Tab转换为空格，需要执行以下命令 :retab!  or set expandtab %retab!
 set softtabstop=4
 set shiftwidth=4
+set autoindent "新增加的行和前一行使用相同的缩进形式
 
 set nu             
 set ic
 set hlsearch
 set smarttab
-set wildmenu "vim 自身命令行模式智能补全
+
+set wildmenu "vim 自身命令行模式智能补全,打入命令时可以看到模糊匹配
 
 "set fileencodings=utf-8,gb2312,gbk,gb18030
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
