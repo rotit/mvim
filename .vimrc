@@ -413,8 +413,8 @@ noremap <M-d> :botright cw<CR> "list
 noremap <M-d><M-d> :ccl<CR>
 
 if has("cscope")
-	set csto=0 "0 run cscope
-	set cst
+	set csto=0 "决定了|:cstag|执行查找的顺序。假如’csto’被设置为0，那么cscope数据将会被优先查找
+	set cst	   "cscopetag’被设置，然后诸如”:tag”和ctrl+]和”vim -t”等命令会始终使用|:cstag|而不是默认的:tag行为。通过设置’cst’，你将始终同时查找cscope数据库和tags文件。默认情况是关闭的
 	set nocsverb
 	" add any database in current directory
 	if filereadable("cscope.out")
