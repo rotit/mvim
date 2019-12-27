@@ -57,20 +57,9 @@ if has('win32')
 	else		
 	au GUIEnter * call MaximizeWindow()
 endif  
-function! MaximizeWindow()		
+function! MaximizeWindow()
 silent !wmctrl -r :ACTIVE: -b add,maximized_vert,maximized_horz
 endfunction 
-
-"gvim
-if has("gui_running")
-colorscheme solarized
-"set guifont=Monospace\ 13
-set guioptions-=T           " 隐藏工具栏
-set guioptions-=m           " 隐藏菜单栏
-set winaltkeys=no "no used alt for menu,only use by mouse
-else
-colorscheme badwolf
-endif
 
 "在标签页栏中去除当前所编辑文件的路径信息，只保留文件名
 "function ShortTabLabel ()
@@ -135,6 +124,7 @@ if filereadable(expand("~/.vimrc.bundles"))
 source ~/.vimrc.bundles
 endif
 filetype plugin indent on 
+
 
 """""""""""""""plug""""""""""""""
 """indentLine
@@ -510,3 +500,15 @@ let g:UltiSnipsListSnippets="<C-i>"
 let g:UltiSnipsJumpForwardTrigger="<C-f>"
 "<C-b>跳转到上一个代码块可编辑区
 let g:UltiSnipsJumpBackwardTrigger="<C-b>"
+
+"""gvim colorscheme
+"set background=light
+if has("gui_running")
+colorscheme solarized
+"set guifont=Monospace\ 13
+set guioptions-=T           " 隐藏工具栏
+set guioptions-=m           " 隐藏菜单栏
+set winaltkeys=no "no used alt for menu,only use by mouse
+else
+colorscheme badwolf
+endif
