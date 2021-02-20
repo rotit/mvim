@@ -33,6 +33,8 @@ Plugin 'nathanaelkane/vim-indent-guides'
 "Plugin 'xolox/vim-misc'
 Plugin 'luochen1990/rainbow' "showing diff level of parentheses in diff color 
 "Plugin 'kien/rainbow_parentheses.vim'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'tpope/vim-repeat'
 
 "marks
 "Plugin 'ShowMarks'

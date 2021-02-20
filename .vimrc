@@ -36,6 +36,12 @@ set foldcolumn=3
 "au BufWinLeave * silent mkview
 "au BufWinEnter * silent loadview
 
+"""""""""""""""meihua"""""""""""""""
+"gitgutter
+"let g:gitgutter_highlight_lines=1
+"let g:gitgutter_highlight_linenrs=1
+let g:gitgutter_sign_modified = '~~'
+
 """""""""""""""bianji""""""""""""""
 "set iskeyword +=- "连字符链接的单词看成一个整体
 set hidden "如果在 A 文件里进行了某些修改，然后切换到 B 文件，然后又切换回 A 文件，此时无法用"u"执行撤销！这是 Vim 的默认行为，不是本插件导致的。
