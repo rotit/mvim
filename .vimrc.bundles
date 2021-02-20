@@ -66,6 +66,7 @@ Plugin 'terryma/vim-expand-region' "这个插件用来扩展选择的内容。�
 Plugin 'Shougo/unite-outline'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
+Plugin 'lyuts/vim-rtags'
 
 "tiaozhuan
 Plugin 'Lokaltog/vim-easymotion'
