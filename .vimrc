@@ -389,7 +389,7 @@ vmap <C-v> <Plug>(expand_region_shrink)
 "for more line {}, (shift)v->chose,(shift)s+{}
 
 """gundo
-nnoremap <leader>h :GundoToggle<CR>
+"nnoremap <leader>h :GundoToggle<CR>
 
 """cscope
 noremap <F11> :set cscopequickfix=s-,c-,d-,i-,t-,e- <CR>

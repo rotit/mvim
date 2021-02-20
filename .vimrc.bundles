@@ -58,7 +58,7 @@ Plugin 'a.vim'
 "bianji
 "Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-surround'
-Plugin 'sjl/gundo.vim'
+"Plugin 'sjl/gundo.vim'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'ycm-core/YouCompleteMe'
 Plugin 'rdnetto/YCM-Generator', { 'branch': 'stable'} 
