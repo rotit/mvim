@@ -486,6 +486,8 @@ let g:ycm_complete_in_comments=1 "在注释中也可以补全
 let g:ycm_min_num_of_chars_for_completion=1 "输入第一个字符就开始补全
 let g:ycm_use_ultisnips_completer=0 "不查询ultisnips提供的代码模板补全，如果需要，设置成1即可
 let g:ycm_key_invoke_completion = '<C-a>'
+let g:ycm_auto_hover = ''
+nmap <leader>d <plug>(YCMHover)
 
 """rainbow
 let g:rainbow_active = 1 "showing diff level of parentheses in diff color
