@@ -142,7 +142,9 @@ filetype plugin indent on
 """vim-indent-gudes
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
-  
+"let g:indent_guides_color_change_percent = 10
+let g:indent_guides_space_guides = 0
+
 """marks browser
 "noremap <C-M> :MarksBrowser<CR>
 
@@ -513,10 +515,10 @@ let g:UltiSnipsJumpBackwardTrigger="<C-b>"
 "set background=light
 if has("gui_running")
 colorscheme solarized
-"set guifont=Monospace\ 13
 set guioptions-=T           " 隐藏工具栏
 set guioptions-=m           " 隐藏菜单栏
 set winaltkeys=no "no used alt for menu,only use by mouse
+"set guifont=DejaVu\ Sans\ Mono\ 10
 else
-colorscheme badwolf
+	colorscheme badwolf
 endif
