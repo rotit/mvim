@@ -145,6 +145,9 @@ let g:indent_guides_guide_size = 1
 "let g:indent_guides_color_change_percent = 10
 let g:indent_guides_space_guides = 0
 
+"""gitgutter
+let g:gitgutter_close_preview_on_escape = 1
+
 """marks browser
 "noremap <C-M> :MarksBrowser<CR>
 
